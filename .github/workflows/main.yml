@@ -2,7 +2,7 @@ name: Build PicX
 
 on:
   push:
-    branches: [ "picx" ]
+    branches: [main]
 
 jobs:
   build:
