@@ -37,7 +37,12 @@ jobs:
       run: cd picx && npm install
     - name: Build
       run: cd picx && npm run build
-  # Deployment job
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        # Upload dist directory
+        path: 'picx/dist'
+# Deployment job
   deploy:
     environment:
       name: github-pages
@@ -47,11 +52,6 @@ jobs:
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: 'picx/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
